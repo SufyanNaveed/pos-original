@@ -13,6 +13,11 @@ class ComposerStaticInit2f339ba354917fa9639f61518bfa4a08
     );
 
     public static $prefixLengthsPsr4 = array (
+        'c' => 
+        array (
+            'chillerlan\\Settings\\' => 20,
+            'chillerlan\\QRCode\\' => 18,
+        ),
         'Z' => 
         array (
             'ZipStream\\' => 10,
@@ -22,6 +27,7 @@ class ComposerStaticInit2f339ba354917fa9639f61518bfa4a08
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\HttpFoundation\\' => 33,
             'Symfony\\Component\\EventDispatcher\\' => 34,
+            'Salla\\ZATCA\\' => 12,
         ),
         'P' => 
         array (
@@ -59,6 +65,14 @@ class ComposerStaticInit2f339ba354917fa9639f61518bfa4a08
     );
 
     public static $prefixDirsPsr4 = array (
+        'chillerlan\\Settings\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-settings-container/src',
+        ),
+        'chillerlan\\QRCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
+        ),
         'ZipStream\\' => 
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
@@ -74,6 +88,10 @@ class ComposerStaticInit2f339ba354917fa9639f61518bfa4a08
         'Symfony\\Component\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
+        ),
+        'Salla\\ZATCA\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/salla/zatca/src',
         ),
         'Psr\\SimpleCache\\' => 
         array (

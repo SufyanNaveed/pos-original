@@ -24,8 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost/pos-origional/';
-$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/pos-origional/';
+$config['base_url'] = 'http://localhost/pos-original/';
+$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/pos-original/';
 
 /*
 |--------------------------------------------------------------------------

@@ -19,7 +19,6 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once APPPATH . 'third_party/vendor/autoload.php';
 require_once APPPATH . 'third_party/qrcode/vendor/autoload.php';
-require_once APPPATH . 'third_party/salla/vendor/autoload.php';
 
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
@@ -1546,15 +1545,14 @@ URL= ' .base_url('billing/view?id=' . $tid . '&itype=inv&token=' . $token));
             $string = base64_encode('1'.strlen($loc['cname']).$loc['cname'].'2'.strlen($loc['taxid']).$loc['taxid'] .'319'. date('Y-m-d', strtotime($data['invoice']['invoicedate'])). ' ' . date('H:i:s').'46'.$data['invoice']['total'].'55'.$data['invoice']['tax']);
 
             //echo $string; exit;
-            $generatedString = new GenerateQrCode();
-            // ::fromArray([
-            //     new Seller('Salla'), // seller name        
-            //     new TaxNumber('1234567891'), // seller tax number
-            //     new InvoiceDate('2021-07-12T14:25:09Z'), // invoice date as Zulu ISO8601 @see https://en.wikipedia.org/wiki/ISO_8601
-            //     new InvoiceTotalAmount('100.00'), // invoice total amount
-            //     new InvoiceTaxAmount('15.00') // invoice tax amount
-            //     // TODO :: Support others tags
-            // ])->toBase64();
+            $generatedString = GenerateQrCode::fromArray([
+                new Seller('Salla'), // seller name        
+                new TaxNumber('1234567891'), // seller tax number
+                new InvoiceDate('2021-07-12T14:25:09Z'), // invoice date as Zulu ISO8601 @see https://en.wikipedia.org/wiki/ISO_8601
+                new InvoiceTotalAmount('100.00'), // invoice total amount
+                new InvoiceTaxAmount('15.00') // invoice tax amount
+                // TODO :: Support others tags
+            ])->toBase64();
 
 
             $qrCode = new QrCode('Seller\'s Name= ' . $loc['cname']. '
@@ -1565,8 +1563,8 @@ Electronic invoice or Credit/Debit Note total (with VAT)= ' .$data['invoice']['t
 Status= ' .$data['invoice']['status'].'
 URL= ' .base_url('billing/view?id=' . $tid . '&itype=inv&token=' . $token));
 
-
-            $qrCode = new QrCode($string);
+            //echo $generatedString; exit;
+            $qrCode = new QrCode($generatedString);
             // $qrCode = new QrCode('QUJDIENvbXBhbnkyMzQ0MjAxLTEyLTIwMjEgMTk6NTA6NDYxNTE0Ljc2NTkuNzY=');
             //header('Content-Type: '.$qrCode->getContentType());
             //echo $qrCode->writeString();
